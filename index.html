@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rachel Ingabire — BCA Student & Developer</title>
+<meta name="description" content="Rachel Ingabire — BCA student focused on cloud, cybersecurity, networking, and AI. Portfolio of projects, community work, and writing." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#0b3d91;
+    --blue:#2563eb;
+    --blue-bright:#3b82f6;
+    --blue-pale:#eef3ff;
+    --ink:#101828;
+    --ink-soft:#475467;
+    --line:#e4e7ec;
+    --paper:#ffffff;
+    --bg:#f8faff;
+    --radius:16px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter', sans-serif; line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Sora', sans-serif; margin:0; letter-spacing:-0.01em; color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--blue); margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:24px; height:2px; background:var(--blue); display:inline-block;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:700;}
+  .section-head p{color:var(--ink-soft); margin-top:10px; font-size:1rem;}
+
+  /* NAV */
+  nav{position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:var(--maxw); margin:0 auto; padding:18px 28px; display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-family:'Sora'; font-weight:700; font-size:1.15rem; color:var(--ink);}
+  .logo span{color:var(--blue);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{font-size:0.92rem; color:var(--ink-soft); font-weight:500;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-toggle{display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--ink);}
+
+  /* HERO */
+  .hero{padding-top:150px; padding-bottom:90px; background:linear-gradient(180deg,var(--blue-pale) 0%, var(--paper) 100%);}
+  .hero-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;}
+  .hero h1{font-size:clamp(2.3rem,4.6vw,3.4rem); font-weight:800; line-height:1.12;}
+  .hero h1 em{font-style:normal; color:var(--blue);}
+  .hero-sub{margin-top:20px; font-size:1.08rem; color:var(--ink-soft); max-width:520px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+  .tag{font-size:0.8rem; font-weight:600; padding:7px 14px; border-radius:999px; background:var(--blue-pale); color:var(--blue-deep);}
+  .cta-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{padding:13px 24px; border-radius:10px; font-weight:600; font-size:0.94rem; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none;}
+  .btn-primary{background:var(--blue); color:#fff;}
+  .btn-primary:hover{background:var(--blue-deep);}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink); background:#fff;}
+  .btn-ghost:hover{border-color:var(--blue); color:var(--blue);}
+  .hero-photo{width:100%; max-width:340px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 20px 50px -12px rgba(37,99,235,0.35); border:6px solid #fff;}
+  .hero-photo img{width:100%; display:block; aspect-ratio:3/4; object-fit:cover;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr; gap:20px;}
+  .about-copy p{color:var(--ink-soft); font-size:1.02rem; margin:0 0 16px;}
+  .stat-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px;}
+  .stat{border:1px solid var(--line); border-radius:14px; padding:22px 16px; text-align:center; background:var(--bg);}
+  .stat .num{font-family:'Sora'; font-size:1.9rem; font-weight:800; color:var(--blue);}
+  .stat .lbl{font-size:0.8rem; color:var(--ink-soft); margin-top:4px;}
+
+  /* JOURNEY */
+  .journey-narrative p{color:var(--ink-soft); font-size:1rem; margin-bottom:16px;}
+  .journey{border-left:2px solid var(--line); padding-left:28px; display:flex; flex-direction:column; gap:26px; margin-top:34px;}
+  .journey-item{position:relative;}
+  .journey-item::before{content:""; position:absolute; left:-34px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 4px var(--blue-pale);}
+  .journey-item .when{font-size:0.8rem; font-weight:700; color:var(--blue);}
+  .journey-item h4{font-size:1.02rem; margin-top:4px;}
+  .journey-item p{color:var(--ink-soft); font-size:0.94rem; margin-top:4px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .skill-card{border:1px solid var(--line); border-radius:var(--radius); padding:24px; background:var(--paper); transition:transform .2s, box-shadow .2s;}
+  .skill-card:hover{transform:translateY(-3px); box-shadow:0 12px 28px -12px rgba(37,99,235,0.25); border-color:var(--blue-bright);}
+  .skill-card .icon{font-size:1.6rem; margin-bottom:14px;}
+  .skill-card h4{font-size:1rem; margin-bottom:6px;}
+  .skill-card p{color:var(--ink-soft); font-size:0.88rem; margin:0;}
+
+  /* PROJECTS */
+  .project-list{display:flex; flex-direction:column;}
+  .project{display:grid; grid-template-columns:52px 1fr; gap:20px; padding:30px 0; border-top:1px solid var(--line);}
+  .project:last-child{border-bottom:1px solid var(--line);}
+  .project .pnum{font-family:'Sora'; font-weight:700; color:var(--blue); font-size:1.3rem;}
+  .project h3{font-size:1.2rem; margin-bottom:4px; display:flex; align-items:center; gap:10px;}
+  .project .cat{font-size:0.76rem; font-weight:600; color:var(--blue); background:var(--blue-pale); padding:3px 10px; border-radius:999px;}
+  .project p{color:var(--ink-soft); font-size:0.95rem; margin-top:8px; max-width:680px;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .stack{font-size:0.75rem; padding:5px 11px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft);}
+  .project-link{margin-top:12px; display:inline-block; font-size:0.86rem; font-weight:600; color:var(--blue);}
+
+  /* EXPERIENCE */
+  .exp-list{display:flex; flex-direction:column; gap:0;}
+  .exp-item{padding:26px 0; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start;}
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  .exp-item h4{font-size:1.05rem;}
+  .exp-item .org{color:var(--blue); font-size:0.9rem; font-weight:600; margin-top:2px;}
+  .exp-item p{color:var(--ink-soft); font-size:0.92rem; margin-top:8px; max-width:640px;}
+  .exp-item .when{font-size:0.8rem; font-weight:600; color:var(--ink-soft); white-space:nowrap; background:var(--bg); padding:6px 12px; border-radius:8px;}
+
+  /* EDUCATION + CERTS */
+  .edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .edu-item{margin-bottom:24px;}
+  .edu-item .when{font-size:0.8rem; font-weight:700; color:var(--blue);}
+  .edu-item h4{font-size:1.02rem; margin-top:4px;}
+  .edu-item p{color:var(--ink-soft); font-size:0.9rem; margin-top:4px;}
+  .cert-list{display:flex; flex-direction:column; gap:14px;}
+  .cert-item{border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:flex; align-items:center; gap:14px; background:var(--bg);}
+  .cert-item .dot{width:8px; height:8px; border-radius:50%; background:var(--blue); flex:none;}
+  .cert-item h4{font-size:0.94rem;}
+  .cert-item p{color:var(--ink-soft); font-size:0.82rem; margin-top:2px;}
+
+  /* CONTACT */
+  .contact-card{border-radius:24px; padding:56px; background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 100%); color:#fff; text-align:center;}
+  .contact-card h2{color:#fff; font-size:clamp(1.9rem,3.6vw,2.5rem);}
+  .contact-card p{color:#dbe6ff; margin-top:14px; max-width:560px; margin-left:auto; margin-right:auto;}
+  .contact-links{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:34px;}
+  .contact-link{display:flex; align-items:center; gap:10px; padding:13px 20px; border-radius:10px; background:rgba(255,255,255,0.12); font-size:0.9rem; font-weight:500; color:#fff;}
+  .contact-link:hover{background:rgba(255,255,255,0.22);}
+
+  footer{padding:32px 0; border-top:1px solid var(--line); text-align:center;}
+  footer p{color:var(--ink-soft); font-size:0.85rem;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .hero-photo{max-width:240px; margin:0 0 20px;}
+    .skills-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+    .edu-grid{grid-template-columns:1fr;}
+    .exp-item{grid-template-columns:1fr;}
+    .nav-links{position:fixed; top:64px; left:0; right:0; background:#fff; flex-direction:column; padding:22px 28px; gap:16px; border-bottom:1px solid var(--line); transform:translateY(-120%); transition:transform .3s ease;}
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+  }
+  @media (max-width:520px){
+    .skills-grid{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{transition:none; opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="logo">rachel<span>.dev</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">BCA Student · Telangana, India</div>
+      <h1>Hi, I'm <em>Rachel</em> Ingabire</h1>
+      <p class="hero-sub">A Computer Applications student focused on cloud infrastructure, cybersecurity, and AI — building real projects, writing about tech in plain language, and helping other women get their start in the field.</p>
+      <div class="tag-row">
+        <span class="tag">Cloud Infrastructure</span>
+        <span class="tag">Cybersecurity</span>
+        <span class="tag">Python</span>
+        <span class="tag">Networking</span>
+        <span class="tag">AI</span>
+      </div>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Get in Touch ↗</a>
+        <a href="#projects" class="btn btn-ghost">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="assets/rachel.jpg" alt="Rachel Ingabire" />
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">Who I Am</div>
+      <h2>About Me</h2>
+      <div class="about-copy" style="margin-top:20px; max-width:760px;">
+        <p>I'm a second-year <strong>Bachelor of Computer Applications</strong> student at SR University, Telangana, currently holding a 9.2/10 CGPA. Before India, I completed my A2 Diploma in Networking and Internet Technology at Rwanda Polytechnic — RP Ngoma College, so my foundation runs from hands-on networking hardware up through modern cloud and AI systems.</p>
+        <p>Outside coursework, I write <strong>INGRA DIGITAL HUB</strong>, a blog that breaks down cloud computing, cybersecurity, Python, and networking into plain, step-by-step language — and I volunteer as a workshop leader with <strong>CS Girlies</strong>, teaching other women to build real, working software.</p>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><div class="num">2+</div><div class="lbl">Years of Experience</div></div>
+        <div class="stat"><div class="num">10+</div><div class="lbl">Blog Posts Published</div></div>
+        <div class="stat"><div class="num">6+</div><div class="lbl">Projects Built</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">Countries Studied In</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="reveal" style="max-width:820px;">
+      <div class="eyebrow">My Journey</div>
+      <h2>From Rwanda to India — A Chapter of Growth</h2>
+      <div class="journey-narrative" style="margin-top:22px;">
+        <p>My path started in Rwanda, where I trained in networking hardware and internet technology — LAN setups, CCTV installation, and Windows Server environments — through three internships at NOVA SERVICES LTD in Kigali. That hands-on foundation shaped how I think about systems: start with what's physically connected before reasoning about what runs on top.</p>
+        <p>In 2025, I moved to Telangana, India to begin my BCA at SR University, expanding from networking into programming, cloud infrastructure, and AI. Alongside my coursework, I founded INGRA DIGITAL HUB to write about what I was learning, and joined CS Girlies as a workshop leader — turning my own progress into something other women could use too.</p>
+      </div>
+      <div class="journey">
+        <div class="journey-item">
+          <div class="when">2020 – 2022</div>
+          <h4>Secondary Education</h4>
+          <p>Groupe Scolaire Tabagwe, Rwanda</p>
+        </div>
+        <div class="journey-item">
+          <div class="when">2023 – 2025</div>
+          <h4>A2 Diploma, Networking &amp; Internet Technology</h4>
+          <p>Rwanda Polytechnic — RP Ngoma College TSS, alongside three internships at NOVA SERVICES LTD.</p>
+        </div>
+        <div class="journey-item">
+          <div class="when">2025 – Ongoing</div>
+          <h4>BCA · SR University, Telangana</h4>
+          <p>Networks, data structures, cloud infrastructure, and AI-assisted coding — while building INGRA DIGITAL HUB and leading CS Girlies workshops.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What I Work With</div>
+      <h2>Skills &amp; Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="icon">🐍</div><h4>Programming</h4><p>Python, JavaScript, PHP, SQL, Bash scripting</p></div>
+      <div class="skill-card reveal"><div class="icon">☁️</div><h4>Cloud &amp; Virtualization</h4><p>VMware vSphere / ESXi / vCenter, Docker basics, Netlify</p></div>
+      <div class="skill-card reveal"><div class="icon">🔒</div><h4>Networking &amp; Security</h4><p>LAN/WAN, TCP/IP, Cisco Packet Tracer, CCTV installation, Linux &amp; Windows Server admin</p></div>
+      <div class="skill-card reveal"><div class="icon">🤖</div><h4>Data &amp; AI</h4><p>Pandas, NumPy, Matplotlib, Plotly, Scikit-learn</p></div>
+      <div class="skill-card reveal"><div class="icon">🖥️</div><h4>Web Frameworks</h4><p>Flask, Django, Node.js, MySQL, XAMPP, phpMyAdmin, WordPress</p></div>
+      <div class="skill-card reveal"><div class="icon">⚙️</div><h4>Hardware &amp; IDEs</h4><p>Arduino IDE, Wokwi, VS Code, PyCharm, Mobirise</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Featured Work</div>
+      <h2>Projects</h2>
+    </div>
+    <div class="project-list">
+      <div class="project reveal">
+        <div class="pnum">01</div>
+        <div>
+          <h3>🛍️ ShopNest <span class="cat">E-commerce</span></h3>
+          <p>A full multi-page e-commerce site with customer, seller, and admin roles, built with localStorage-backed state — developed as a CAT 2 assignment.</p>
+          <div class="stack-row"><span class="stack">HTML</span><span class="stack">CSS</span><span class="stack">JavaScript</span><span class="stack">localStorage</span></div>
+        </div>
+      </div>
+      <div class="project reveal">
+        <div class="pnum">02</div>
+        <div>
+          <h3>🕵️ Job &amp; Internship Scam Detection System <span class="cat">Security · AI</span></h3>
+          <p>A multi-layered analysis pipeline that flags fraudulent job postings using rule-based heuristics, LLM analysis, domain verification, and a composite risk score.</p>
+          <div class="stack-row"><span class="stack">Python</span><span class="stack">LLM Analysis</span><span class="stack">Risk Scoring</span></div>
+        </div>
+      </div>
+      <div class="project reveal">
+        <div class="pnum">03</div>
+        <div>
+          <h3>💗 Code Your Wellness — Health Tracker <span class="cat">Python · Workshop</span></h3>
+          <p>A Python health tracker built three ways — terminal app, Tkinter GUI, and a Streamlit web app — created as the centerpiece of a CS Girlies workshop.</p>
+          <div class="stack-row"><span class="stack">Python</span><span class="stack">Tkinter</span><span class="stack">Streamlit</span></div>
+        </div>
+      </div>
+      <div class="project reveal">
+        <div class="pnum">04</div>
+        <div>
+          <h3>🔍 Fake Product Review Detection System <span class="cat">ML · NLP</span></h3>
+          <p>An ML-powered Flask app that classifies product reviews as genuine or fake, using TF-IDF vectorization, Naive Bayes, and NLP preprocessing.</p>
+          <div class="stack-row"><span class="stack">Python</span><span class="stack">Flask</span><span class="stack">Scikit-learn</span><span class="stack">NLP</span></div>
+        </div>
+      </div>
+      <div class="project reveal">
+        <div class="pnum">05</div>
+        <div>
+          <h3>📡 Motion Detection Database System <span class="cat">IoT · Web</span></h3>
+          <p>A web-based system for storing and managing motion-detection data, connecting IoT sensor input to a PHP/MySQL backend.</p>
+          <div class="stack-row"><span class="stack">PHP</span><span class="stack">MySQL</span><span class="stack">IoT</span></div>
+        </div>
+      </div>
+      <div class="project reveal">
+        <div class="pnum">06</div>
+        <div>
+          <h3>👁️ Dichoptic Vision Therapy for Amblyopia <span class="cat">HealthTech · In Progress</span></h3>
+          <p>A software prototype for treating amblyopia (lazy eye) using red-blue dichoptic filter therapy — rebalancing contrast between the strong and weak eye instead of traditional eye patching. Includes an adaptive game with live gain control, eye calibration, response-time tracking, and a progress dashboard.</p>
+          <div class="stack-row"><span class="stack">Python</span><span class="stack">Pygame</span><span class="stack">OpenCV</span><span class="stack">Flask</span><span class="stack">MySQL</span><span class="stack">Chart.js</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Career</div>
+      <h2>Experience</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div>
+          <h4>IT Support &amp; Computer Maintenance Technician</h4>
+          <div class="org">NOVA SERVICES LTD — Kigali, Rwanda</div>
+          <p>Computer maintenance, hardware/software diagnostics, OS/app installation, and network troubleshooting.</p>
+        </div>
+        <div class="when">2025</div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h4>Software Development Intern</h4>
+          <div class="org">NOVA SERVICES LTD — Kigali, Rwanda</div>
+          <p>Built websites with HTML/CSS/JS/PHP, worked with Node.js, database integration, website hosting/deployment, and software testing.</p>
+        </div>
+        <div class="when">2024</div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h4>Networking and Internet Technology Intern</h4>
+          <div class="org">NOVA SERVICES LTD — Kigali, Rwanda</div>
+          <p>LAN setup and troubleshooting, CCTV installation, network device configuration, and Windows Server environments.</p>
+        </div>
+        <div class="when">2023 – 2024</div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h4>Workshop Leader</h4>
+          <div class="org">CS Girlies</div>
+          <p>Leading hands-on sessions that give women a first real project to point to — including "Code Your Wellness," a live-build workshop on Python health trackers.</p>
+        </div>
+        <div class="when">Ongoing</div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h4>Founder &amp; Writer</h4>
+          <div class="org">INGRA DIGITAL HUB</div>
+          <p>Writing step-by-step guides on cloud computing, cybersecurity, Python, and networking for beginners.</p>
+        </div>
+        <div class="when">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION + CERTS -->
+<section id="education" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Academic Background</div>
+      <h2>Education &amp; Certifications</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="reveal">
+        <div class="edu-item">
+          <div class="when">2025 – 2028</div>
+          <h4>Bachelor of Computer Applications (BCA)</h4>
+          <p>SR University — Telangana, India · CGPA 9.2/10</p>
+        </div>
+        <div class="edu-item">
+          <div class="when">2023 – 2025</div>
+          <h4>A2 Diploma, Networking &amp; Internet Technology</h4>
+          <p>Rwanda Polytechnic — RP Ngoma College TSS</p>
+        </div>
+        <div class="edu-item">
+          <div class="when">2020 – 2022</div>
+          <h4>Secondary Education</h4>
+          <p>Groupe Scolaire Tabagwe, Rwanda</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:16px;">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item"><div class="dot"></div><div><h4>Networking and Internet Technology Certificate</h4><p>NOVA SERVICES LTD · 2024</p></div></div>
+          <div class="cert-item"><div class="dot"></div><div><h4>Software Development Certificate</h4><p>NOVA SERVICES LTD</p></div></div>
+          <div class="cert-item"><div class="dot"></div><div><h4>Database Management</h4><p>Saylor Academy</p></div></div>
+          <div class="cert-item"><div class="dot"></div><div><h4>Data Analysis Using Python</h4><p>Saylor Academy</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="eyebrow" style="justify-content:center; color:#dbe6ff;">Let's Connect</div>
+      <h2>Get In Touch</h2>
+      <p>Open to internships, collaborations, and conversations about cloud, security, or anything I'm building next.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:rachealingabire1@gmail.com">✉️ rachealingabire1@gmail.com</a>
+        <a class="contact-link" href="tel:+250793815112">📞 +250 793 815 112</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/rachel-ingabire" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a class="contact-link" href="https://github.com/rachel831/racheal831.github.io" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="contact-link" href="https://www.instagram.com/_racheal29/" target="_blank" rel="noopener">📸 Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Rachel Ingabire · BCA Student · Cloud &amp; Cybersecurity</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
